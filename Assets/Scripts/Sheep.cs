@@ -21,19 +21,15 @@ public class Sheep : MonoBehaviour
         switch (spawnPoint)
         {
             case 0:
-                Debug.Log(position);
                 position.x += speed;
                 break;
             case 1:
-                Debug.Log(position);
                 position.y += speed;
                 break;
             case 2:
                 position.x -= speed;
-                Debug.Log(position);
                 break;
             case 3:
-                Debug.Log(position);
                 position.y -= speed;
                 break;
         }
