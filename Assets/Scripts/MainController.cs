@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainController : MonoBehaviour
@@ -28,19 +30,20 @@ public class MainController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 30;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         sheepSpawnTime += Time.deltaTime;
-        if (sheepSpawnTime > 1 && !isCinderellaTime)
+        if (sheepSpawnTime > 2 && !isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
         }
 
-        if (sheepSpawnTime > 0.2f && isCinderellaTime)
+        if (sheepSpawnTime > 0.4f && isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
@@ -49,7 +52,7 @@ public class MainController : MonoBehaviour
         cinderellaTime += Time.deltaTime;
         float sheepPercentage = sheepMeter.sheepPercentage;
         
-        if (sheepPercentage > 80 && !isCinderellaTime)
+        if (cinderellaTime < 5 && !isCinderellaTime)
         {
             cinderellaTime = 0;
             isCinderellaTime = true;
@@ -68,6 +71,7 @@ public class MainController : MonoBehaviour
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
+
         if (wolfSpawnCheckTime > 1 && !isNightmareTime)
 
         {
@@ -79,7 +83,7 @@ public class MainController : MonoBehaviour
         
         if (sheepPercentage < 20 && !isNightmareTime)
         {
-                nightmareTime = 0;
+            nightmareTime = 0;
             isNightmareTime = true;
 
         }
@@ -89,11 +93,40 @@ public class MainController : MonoBehaviour
             isNightmareTime = false;
         }
 
+        CheckoutInsideSheep();
     }
 
     public void OnDestroy()
     {
         insideFenceSheeps = new List<GameObject>();
         outsideFenceSheeps = new List<GameObject>();
+    }
+
+    public void wolfAttack()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int count = insideFenceSheeps.Count;
+            if (count > 0)
+            {
+                Destroy(insideFenceSheeps[count - 1]);
+                insideFenceSheeps.RemoveAt(count - 1);
+            }
+        }
+    }
+    public void CheckoutInsideSheep()
+    {
+        for (int i = 0; i < insideFenceSheeps.Count; i++)
+        {
+            if (insideFenceSheeps[i].GetComponent<Sheep>() != null)
+            {
+                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = true;
+                InsideSheepMove(insideFenceSheeps[i].GetComponent<Sheep>());
+            }
+        }
+    }
+    public void InsideSheepMove(Sheep sheep)
+    {
+        sheep.InsideMove();
     }
 }
