@@ -17,7 +17,7 @@ public class MainController : MonoBehaviour
     private bool isCinderellaTime = false;
     public SheepController sheepController;
 
-    public List<GameObject> existedSheeps = new List<GameObject>();
+    public List<GameObject> outsideFenceSheeps = new List<GameObject>();
 
     void Start()
     {
