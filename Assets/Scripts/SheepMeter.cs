@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SheepMeter : MonoBehaviour
 {
+    public float sheepPercentage;
     public GameObject cursor;
     private const float maxLength = 4.0f;
     private const int maxSheepNum = 50; 
@@ -24,8 +26,9 @@ public class SheepMeter : MonoBehaviour
             return;
         }
         float length = maxLength * count / maxSheepNum;
-        cursor.transform.position = new Vector2(-6.5f, -1 + length);
 
+        sheepPercentage = (count * 100) / maxSheepNum;
+        cursor.transform.position = new Vector2(-6.5f, -1 + length);
     }
 
 }
