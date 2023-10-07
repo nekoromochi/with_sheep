@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour
+public class MainController : MonoBehaviour
 {
     private float wolfSpawnCheckTime = 0; // ˜T‚ÌƒXƒ|[ƒ“‚ğŠÇ—‚·‚éŠÔ
 
@@ -17,6 +17,8 @@ public class test : MonoBehaviour
     private bool isCinderellaTime = false;
     public SheepController sheepController;
 
+    public List<GameObject> existedSheeps = new List<GameObject>();
+
     void Start()
     {
         Application.targetFrameRate = 30;
@@ -25,7 +27,14 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        sheepSpawnTime += Time.deltaTime;
         if (sheepSpawnTime > 1 && !isCinderellaTime)
+        {
+            sheepSpawnTime = 0;
+            sheepController.Spawn();
+        }
+
+        if (sheepSpawnTime > 0.2f && isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
