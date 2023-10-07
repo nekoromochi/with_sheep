@@ -16,9 +16,10 @@ public class SheepController : MonoBehaviour
     {
         
     }
+
     public void Spawn()
     {
-            int rnd = Random.Range(0, 4);
+       int rnd = Random.Range(0, 4);
         GameObject go = Instantiate(sheepPrefab);
         Debug.Log(rnd);
         if (rnd == 0)
