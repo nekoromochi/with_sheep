@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    private float wolfSpawnCheckTime = 0; // ˜T‚ÌƒXƒ|[ƒ“‚ðŠÇ—‚·‚éŽžŠÔ
+
+    public float wolfSpawnSeconds = 2;
+
+    public WolfController wolfController;
+
+
     // Start is called before the first frame update
     public float sheepSpawnTime = 0;
     public float cinderellaTime = 0;
     private bool isCinderellaTime = false;
     public SheepController sheepController;
+
     void Start()
     {
         Application.targetFrameRate = 30;
@@ -17,12 +25,6 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sheepSpawnTime += Time.deltaTime;
-        if(sheepSpawnTime > 0.2f && isCinderellaTime) {
-            sheepSpawnTime = 0;
-            sheepController.Spawn();
-        }
-
         if (sheepSpawnTime > 1 && !isCinderellaTime)
         {
             sheepSpawnTime = 0;
@@ -43,5 +45,12 @@ public class test : MonoBehaviour
             isCinderellaTime = false;
         }
 
+        wolfSpawnCheckTime += Time.deltaTime;
+        
+        if (wolfSpawnCheckTime > wolfSpawnSeconds)
+        {
+            wolfSpawnCheckTime = 0;
+            wolfController.Spawn();
+        }
     }
 }

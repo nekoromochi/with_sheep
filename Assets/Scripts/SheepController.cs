@@ -16,6 +16,7 @@ public class SheepController : MonoBehaviour
     {
         
     }
+
     public void Spawn()
     {
         int rnd = Random.Range(0, 4);
