@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 420235821777993098}
   - component: {fileID: 4652117578923841660}
   - component: {fileID: 952680173371084431}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ BoxCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 3520
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
