@@ -64,7 +64,6 @@ public class Sheep : MonoBehaviour
     {
         if (collision.tag == "FenceGate")
         {
-            Debug.Log(collision);
             mainController.insideFenceSheeps.Add(this.gameObject);
             mainController.outsideFenceSheeps.Remove(this.gameObject);
         }

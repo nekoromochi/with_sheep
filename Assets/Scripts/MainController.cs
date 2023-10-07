@@ -36,13 +36,13 @@ public class MainController : MonoBehaviour
     void Update()
     {
         sheepSpawnTime += Time.deltaTime;
-        if (sheepSpawnTime > 3 && !isCinderellaTime)
+        if (sheepSpawnTime > 1 && !isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
         }
 
-        if (sheepSpawnTime > 0.2f && isCinderellaTime)
+        if (sheepSpawnTime > 0.4f && isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
@@ -51,7 +51,7 @@ public class MainController : MonoBehaviour
         cinderellaTime += Time.deltaTime;
         float sheepPercentage = sheepMeter.sheepPercentage;
         
-        if (sheepPercentage > 80 && !isCinderellaTime)
+        if (cinderellaTime < 5 && !isCinderellaTime)
         {
             Debug.Log("シンデレラタイムスタート");
             cinderellaTime = 0;
