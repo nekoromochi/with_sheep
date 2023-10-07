@@ -111,6 +111,8 @@ public class MainController : MonoBehaviour
             {
                 Destroy(insideFenceSheeps[count - 1]);
                 insideFenceSheeps.RemoveAt(count - 1);
+                //insideFenceSheeps[count - 1].GetComponent<Sheep>().IsInside = false;
+                //insideFenceSheeps[count - 1].GetComponent<Sheep>().Escape();
             }
         }
     }
@@ -121,12 +123,8 @@ public class MainController : MonoBehaviour
             if (insideFenceSheeps[i].GetComponent<Sheep>() != null)
             {
                 insideFenceSheeps[i].GetComponent<Sheep>().IsInside = true;
-                InsideSheepMove(insideFenceSheeps[i].GetComponent<Sheep>());
             }
         }
     }
-    public void InsideSheepMove(Sheep sheep)
-    {
-        sheep.InsideMove();
-    }
+    
 }

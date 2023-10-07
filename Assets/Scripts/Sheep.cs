@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +15,7 @@ public class Sheep : MonoBehaviour
     /* -- h-sato Edit1/4  Start -- */
     private bool isInside = false;
     private bool isInsideMove = false;
+    private bool isEscape = false;
     // 動き終わるまでの時間
     [SerializeField] float MovedEndTime = 5;
     private float insideMoveTime;
@@ -24,8 +26,23 @@ public class Sheep : MonoBehaviour
     private Vector3 moveDistance = Vector3.zero;
     Rigidbody2D rb2d = default;
 
+
+    private Transform escapePoint;
+    private Vector3 escapeDistance = Vector3.zero;
+    private Vector3 escapeStartPos = Vector3.zero;
+    private float escapeTime = 0;
+    [SerializeField] private float escapeTimeLimit = 2.0f;
+
+    // プロパティ
     public Transform RangeA { set { rangeA = value; } }
     public Transform RangeB { set { rangeB = value; } }
+    public Transform EscapePoint { set {  escapePoint = value; } }
+    public bool IsInside
+    {
+        get { return isInside; }
+        set { isInside = value; }
+    }
+    public bool IsEscape {  set { isEscape = value; } }
     /* -- h-sato Edit1/4  End   -- */
 
     // Start is called before the first frame update
@@ -40,7 +57,16 @@ public class Sheep : MonoBehaviour
     void Update()
     {
         /* -- h-sato Edit3/4  Start -- */
-        if (IsInside) { return; }
+        if (isEscape && !isInside)
+        {
+            EscapeMove();
+            return;
+        }
+        if (!isEscape && isInside)
+        {
+            InsideMove();
+            return;
+        }
         /* -- h-sato Edit3/4  End   -- */
         Vector2 position = transform.position;
         switch (spawnPoint)
@@ -62,6 +88,7 @@ public class Sheep : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (isEscape) { return; }
         if (collision.tag == "FenceGate")
         {
             mainController.insideFenceSheeps.Add(this.gameObject);
@@ -77,12 +104,7 @@ public class Sheep : MonoBehaviour
 
     /* -- h-sato Edit4/4  Start -- */  
 
-    // プロパティ
-    public bool IsInside
-    {
-        get { return isInside; }
-        set { isInside = value; }
-    }
+    
 
     public void InsideMove()
     {
@@ -123,6 +145,28 @@ public class Sheep : MonoBehaviour
                 insideMoveTime = 0;
                 isInsideMove = false;
             }
+        }
+    }
+
+    public void Escape()
+    {
+        if (isInside) { return; }
+        // 進行距離算出
+        escapeStartPos = transform.position;
+        escapeDistance = escapePoint.position - startPos;
+        this.IsEscape = true;
+        Debug.Log("SheepEscape Now");
+    }
+
+    public void EscapeMove()
+    {
+        escapeTime += Time.deltaTime;
+        Vector3 frameMove = escapeTime * escapeDistance / escapeTimeLimit;
+        transform.position = escapeStartPos + frameMove;
+        if (escapeTime > escapeTimeLimit)
+        {
+            mainController.insideFenceSheeps.Remove(this.gameObject);
+            Destroy(this.gameObject);
         }
 
     }

@@ -11,7 +11,7 @@ public class TriggerCircle : MonoBehaviour
         if (collision.gameObject.layer == sheepLayerNum)
         {
             
-            // collision.GetComponent<Sheep>().EsCape();
+            collision.GetComponent<Sheep>().Escape();
             Debug.Log("SheepEscape!!");
         }
 
