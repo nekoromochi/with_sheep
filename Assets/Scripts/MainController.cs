@@ -10,11 +10,14 @@ public class MainController : MonoBehaviour
 
     public WolfController wolfController;
 
+    public SheepMeter sheepMeter;
+
 
     // Start is called before the first frame update
     public float sheepSpawnTime = 0;
     public float cinderellaTime = 0;
     private bool isCinderellaTime = false;
+    private bool isSheepPercentage = false;
     public SheepController sheepController;
 
     public List<GameObject> outsideFenceSheeps = new List<GameObject>();
@@ -43,7 +46,9 @@ public class MainController : MonoBehaviour
         }
 
         cinderellaTime += Time.deltaTime;
-        if (cinderellaTime > 5 && !isCinderellaTime)
+        float sheepPercentage = sheepMeter.sheepPercentage;
+        
+        if (sheepPercentage > 80 && !isCinderellaTime)
         {
             Debug.Log("シンデレラタイムスタート");
             cinderellaTime = 0;
