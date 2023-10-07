@@ -5,6 +5,8 @@ using UnityEngine;
 public class SheepController : MonoBehaviour
 {
     public GameObject sheepPrefab;
+    public MainController mainController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,8 @@ public class SheepController : MonoBehaviour
         int rnd = Random.Range(0, 4);
         //Scenes‚Ì’†‚Ésheep‚ğ¶‚İo‚µ‚Ä‚¢‚éB
         GameObject go = Instantiate(sheepPrefab);
-
+        mainController.existedSheeps.Add(go);
+        Debug.Log('a');
         if (rnd == 0)
         {
             go.transform.position = new Vector2(-9,0);

@@ -215,6 +215,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1167433652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167433654}
+  - component: {fileID: 1167433653}
+  m_Layer: 0
+  m_Name: WolfController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1167433653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167433652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3356009e9ba2c38438d9ac2a60647ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WolfPrefab: {fileID: 4519924764146926945, guid: c8e526cd2e2400940b934496648a26b0, type: 3}
+  wolf: {fileID: 420235821777993098, guid: c8e526cd2e2400940b934496648a26b0, type: 3}
+--- !u!4 &1167433654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167433652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13571832, y: 0.47056985, z: 0.03392602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346699983
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +290,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5580ac5566058984fab7ca8219b11f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wolfSpawnSeconds: 2
+  wolfController: {fileID: 1167433653}
   sheepSpawnTime: 0
+  cinderellaTime: 0
   sheepController: {fileID: 1650083274}
+  existedSheeps: []
 --- !u!4 &1346699985
 Transform:
   m_ObjectHideFlags: 0
@@ -337,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheepPrefab: {fileID: 6504207833250299857, guid: 7abe8fd982e5ec745b16db6cb13076e3, type: 3}
+  mainController: {fileID: 1346699984}
 --- !u!1 &1751378291
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,3 +641,4 @@ SceneRoots:
   - {fileID: 1751378293}
   - {fileID: 3843973095294776754}
   - {fileID: 8942584869651103464}
+  - {fileID: 1167433654}
