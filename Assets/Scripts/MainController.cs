@@ -24,6 +24,7 @@ public class MainController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 30;
+
     }
 
     // Update is called once per frame
@@ -63,6 +64,10 @@ public class MainController : MonoBehaviour
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
+
+        /* -- h-sato Edit2/3  Start -- */
+        CheckoutInsideSheep();
+        /* -- h-sato Edit2/3  End -- */
     }
 
     public void OnDestroy()
@@ -70,4 +75,22 @@ public class MainController : MonoBehaviour
         insideFenceSheeps = new List<GameObject>();
         outsideFenceSheeps = new List<GameObject>();
     }
+
+    /* -- h-sato Edit3/3  Start -- */
+    public void CheckoutInsideSheep()
+    {
+        for (int i = 0; i < insideFenceSheeps.Count; i++)
+        {
+            if (insideFenceSheeps[i].GetComponent<Sheep>() != null)
+            {
+                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = true;
+                InsideSheepMove(insideFenceSheeps[i].GetComponent<Sheep>());
+            }
+        }
+    }
+    public void InsideSheepMove(Sheep sheep)
+    {
+        sheep.InsideMove();
+    }
+    /* -- h-sato Edit3/3  End -- */
 }
