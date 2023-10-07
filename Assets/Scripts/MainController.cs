@@ -19,7 +19,8 @@ public class MainController : MonoBehaviour
     private bool isCinderellaTime = false;
     private bool isSheepPercentage = false;
     public SheepController sheepController;
-
+    public float nightmareTime = 0;
+    private bool isNightmareTime = false;
     public List<GameObject> outsideFenceSheeps = new List<GameObject>();
     public List<GameObject> insideFenceSheeps = new List<GameObject>();
 
@@ -50,24 +51,44 @@ public class MainController : MonoBehaviour
         
         if (sheepPercentage > 80 && !isCinderellaTime)
         {
-            Debug.Log("シンデレラタイムスタート");
             cinderellaTime = 0;
             isCinderellaTime = true;
         }
         if (cinderellaTime > 10 && isCinderellaTime)
         {
-            Debug.Log("シンデレラタイムend");
             cinderellaTime = 0;
             isCinderellaTime = false;
         }
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > wolfSpawnSeconds)
+        if (wolfSpawnCheckTime > 0.2f && isNightmareTime)
+
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
+        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
+
+        {
+            wolfSpawnCheckTime = 0;
+            wolfController.Spawn();
+        }
+
+            nightmareTime += Time.deltaTime;
+        
+        if (sheepPercentage < 20 && !isNightmareTime)
+        {
+                nightmareTime = 0;
+            isNightmareTime = true;
+
+        }
+        if(nightmareTime > 10 && isNightmareTime)
+        {
+            nightmareTime = 0;
+            isNightmareTime = false;
+        }
+
     }
 
     public void OnDestroy()

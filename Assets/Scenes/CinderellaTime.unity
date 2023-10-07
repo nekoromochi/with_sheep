@@ -720,6 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolfSpawnSeconds: 2
   wolfController: {fileID: 1167433653}
+  sheepMeter: {fileID: 1776077419}
   sheepSpawnTime: 0
   cinderellaTime: 0
   sheepController: {fileID: 1650083274}
@@ -1123,6 +1124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d2eff236f99454fb97205acecd1e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sheepPercentage: 0
   cursor: {fileID: 883449138}
   mainController: {fileID: 1346699984}
 --- !u!1 &2063648679
