@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class TriggerCircle : MonoBehaviour
 {
+    int sheepLayerNum = 7;
+    int wolfLayerNum = 8;
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Sheep" || collision.tag == "Wolf")
+        if (collision.gameObject.layer == sheepLayerNum)
         {
-            /*
-            if (collision == Sheep)
-            {
-                collision.GetComponent<Sheep>().EsCape();
-            }
-            if (collision == Wolf)
-            {
-                collision.GetComponent<Wolf>().EsCape();
-            }*/
-            Debug.Log("Escape!!");
+            
+            // collision.GetComponent<Sheep>().EsCape();
+            Debug.Log("SheepEscape!!");
+        }
+
+        if (collision.gameObject.layer == wolfLayerNum)
+        {
+            // collision.GetComponent<Wolf>().EsCape();
+            Debug.Log("WolfEscape!!");
         }
     }
 }

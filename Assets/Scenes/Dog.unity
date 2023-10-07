@@ -483,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 378177485}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.36, y: -0.12, z: 0.045706123}
+  m_LocalPosition: {x: 2.45, y: -0.15, z: 0.045706123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 511291608}
   - component: {fileID: 511291607}
   - component: {fileID: 511291606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (1)
   m_TagString: FenceGate
   m_Icon: {fileID: 0}
@@ -817,8 +817,8 @@ Transform:
   m_GameObject: {fileID: 511291605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.36, y: 0.8489, z: 0}
-  m_LocalScale: {x: 0.28601363, y: 2.0251594, z: 1}
+  m_LocalPosition: {x: -1.25, y: 0.89, z: 0}
+  m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 752570511}
   - component: {fileID: 752570513}
   - component: {fileID: 752570512}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Square (2)
   m_TagString: Fence
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ Transform:
   m_GameObject: {fileID: 838205115}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.99, y: 1.63, z: 0.045706123}
+  m_LocalPosition: {x: -1.09, y: 1.84, z: 0.045706123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1308,7 +1308,7 @@ GameObject:
   - component: {fileID: 1002034902}
   - component: {fileID: 1002034901}
   - component: {fileID: 1002034900}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (4)
   m_TagString: FenceGate
   m_Icon: {fileID: 0}
@@ -1421,8 +1421,8 @@ Transform:
   m_GameObject: {fileID: 1002034899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.57, y: -0.89, z: 0}
-  m_LocalScale: {x: 0.28601363, y: 2.0251594, z: 1}
+  m_LocalPosition: {x: 0.65, y: -0.37, z: 0}
+  m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 1077169693}
   - component: {fileID: 1077169695}
   - component: {fileID: 1077169694}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Square (3)
   m_TagString: Fence
   m_Icon: {fileID: 0}
@@ -1849,7 +1849,7 @@ GameObject:
   - component: {fileID: 1179541760}
   - component: {fileID: 1179541759}
   - component: {fileID: 1179541758}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (2)
   m_TagString: FenceGate
   m_Icon: {fileID: 0}
@@ -1962,8 +1962,8 @@ Transform:
   m_GameObject: {fileID: 1179541757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.57, y: 0.79, z: 0}
-  m_LocalScale: {x: 0.28601363, y: 2.0251594, z: 1}
+  m_LocalPosition: {x: 2.68, y: 0.83, z: 0}
+  m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1979,7 +1979,7 @@ GameObject:
   - component: {fileID: 1340755258}
   - component: {fileID: 1340755260}
   - component: {fileID: 1340755259}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Square (1)
   m_TagString: Fence
   m_Icon: {fileID: 0}
@@ -2129,6 +2129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolfSpawnSeconds: 2
   wolfController: {fileID: 1096629970}
+  sheepMeter: {fileID: 1949526305}
   sheepSpawnTime: 0
   cinderellaTime: 0
   sheepController: {fileID: 1645079917}
@@ -2162,7 +2163,7 @@ GameObject:
   - component: {fileID: 1413313923}
   - component: {fileID: 1413313924}
   - component: {fileID: 1413313925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2265,7 +2266,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 5056
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2418,7 +2419,7 @@ GameObject:
   - component: {fileID: 1536056133}
   - component: {fileID: 1536056135}
   - component: {fileID: 1536056134}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TriggerCircle
   m_TagString: DogCircle
   m_Icon: {fileID: 0}
@@ -2482,7 +2483,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.9800461, b: 0, a: 0.39215687}
+  m_Color: {r: 1, g: 0.9800461, b: 0, a: 0.039215688}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2519,7 +2520,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7744
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2785,7 +2786,7 @@ GameObject:
   - component: {fileID: 1751378293}
   - component: {fileID: 1751378292}
   - component: {fileID: 1751378295}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence
   m_TagString: Fence
   m_Icon: {fileID: 0}
@@ -2888,7 +2889,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2915,7 +2916,7 @@ GameObject:
   - component: {fileID: 1777710258}
   - component: {fileID: 1777710257}
   - component: {fileID: 1777710256}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (3)
   m_TagString: FenceGate
   m_Icon: {fileID: 0}
@@ -3028,8 +3029,8 @@ Transform:
   m_GameObject: {fileID: 1777710255}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.66, y: 2.78, z: 0}
-  m_LocalScale: {x: 0.28601363, y: 2.0251594, z: 1}
+  m_LocalPosition: {x: 0.62, y: 2.02, z: 0}
+  m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3213,6 +3214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1949526304}
+  - component: {fileID: 1949526305}
   m_Layer: 0
   m_Name: SheepMeter
   m_TagString: Untagged
@@ -3237,6 +3239,21 @@ Transform:
   - {fileID: 2116474925}
   m_Father: {fileID: 588220286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1949526305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949526303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2eff236f99454fb97205acecd1e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sheepPercentage: 0
+  cursor: {fileID: 2116474924}
+  mainController: {fileID: 1346699984}
 --- !u!1 &2043124387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,7 +3327,7 @@ GameObject:
   - component: {fileID: 2101549211}
   - component: {fileID: 2101549213}
   - component: {fileID: 2101549212}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Square
   m_TagString: Fence
   m_Icon: {fileID: 0}
