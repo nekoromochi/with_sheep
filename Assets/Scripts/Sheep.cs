@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class Sheep : MonoBehaviour
 {
+    public int id;
+    public MainController mainController;
     public float speed = 0.05f;
     //sheep‚ªƒXƒ|[ƒ“‚µ‚Ä‚¢‚éêŠ‚Ìî•ñ‚ğ“Ç‚İ‚ŞêŠ
     public int spawnPoint;
@@ -34,5 +36,19 @@ public class Sheep : MonoBehaviour
                 break;
         }
         transform.position = position;
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "FenceGate")
+        {
+            Debug.Log(collision);
+            mainController.insideFenceSheeps.Add(this.gameObject);
+            mainController.outsideFenceSheeps.Remove(this.gameObject);
+        }
+    }
+    public void OnApplicationQuit()
+    {
+        mainController.insideFenceSheeps = new List<GameObject>();
+        mainController.outsideFenceSheeps = new List<GameObject>();
     }
 }

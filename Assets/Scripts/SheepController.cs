@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SheepController : MonoBehaviour
 {
+    private int sheepNum = 0;
     public GameObject sheepPrefab;
     public MainController mainController;
 
@@ -41,6 +42,8 @@ public class SheepController : MonoBehaviour
         }
         //Gameobject‚Ìsheepscript‚ðŽæ“¾‚·‚é
         Sheep sheep = go.GetComponent<Sheep>();
+        sheep.mainController = mainController;
         sheep.spawnPoint = rnd;
+        sheep.id = sheepNum++;
     }
 }
