@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainController : MonoBehaviour
@@ -30,7 +32,7 @@ public class MainController : MonoBehaviour
     void Update()
     {
         sheepSpawnTime += Time.deltaTime;
-        if (sheepSpawnTime > 1 && !isCinderellaTime)
+        if (sheepSpawnTime > 3 && !isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
@@ -69,5 +71,18 @@ public class MainController : MonoBehaviour
     {
         insideFenceSheeps = new List<GameObject>();
         outsideFenceSheeps = new List<GameObject>();
+    }
+
+    public void wolfAttack()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int count = insideFenceSheeps.Count;
+            if (count > 0)
+            {
+                Destroy(insideFenceSheeps[count - 1]);
+                insideFenceSheeps.RemoveAt(count - 1);
+            }
+        }
     }
 }

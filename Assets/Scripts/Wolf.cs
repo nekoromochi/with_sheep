@@ -6,6 +6,8 @@ public class Wolf : MonoBehaviour
 {
     public float speed = 0.05f;
     public int startPosition;
+    public MainController mainController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +33,14 @@ public class Wolf : MonoBehaviour
                 break;
         }
         transform.position = position;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "FenceGate")
+        {
+            mainController.wolfAttack();
+            Debug.Log("attack");
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class WolfController : MonoBehaviour
 {
     public GameObject WolfPrefab;
-    private Wolf wolf;
+    public MainController mainController;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +39,8 @@ public class WolfController : MonoBehaviour
                 wolf.transform.position = new Vector2(-8, 0);
                 break;
         }
-        wolf.GetComponent<Wolf>().startPosition = position;
+        Wolf wolfScript = wolf.GetComponent<Wolf>();
+        wolfScript.startPosition = position;
+        wolfScript.mainController = mainController;
     }
 }
