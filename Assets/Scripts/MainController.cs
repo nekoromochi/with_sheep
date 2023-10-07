@@ -12,11 +12,14 @@ public class MainController : MonoBehaviour
 
     public WolfController wolfController;
 
+    public SheepMeter sheepMeter;
+
 
     // Start is called before the first frame update
     public float sheepSpawnTime = 0;
     public float cinderellaTime = 0;
     private bool isCinderellaTime = false;
+    private bool isSheepPercentage = false;
     public SheepController sheepController;
 
     public List<GameObject> outsideFenceSheeps = new List<GameObject>();
@@ -26,6 +29,7 @@ public class MainController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 30;
+
     }
 
     // Update is called once per frame
@@ -45,7 +49,9 @@ public class MainController : MonoBehaviour
         }
 
         cinderellaTime += Time.deltaTime;
-        if (cinderellaTime > 5 && !isCinderellaTime)
+        float sheepPercentage = sheepMeter.sheepPercentage;
+        
+        if (sheepPercentage > 80 && !isCinderellaTime)
         {
             Debug.Log("シンデレラタイムスタート");
             cinderellaTime = 0;
@@ -65,6 +71,8 @@ public class MainController : MonoBehaviour
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
+
+        CheckoutInsideSheep();
     }
 
     public void OnDestroy()
@@ -84,5 +92,20 @@ public class MainController : MonoBehaviour
                 insideFenceSheeps.RemoveAt(count - 1);
             }
         }
+    }
+    public void CheckoutInsideSheep()
+    {
+        for (int i = 0; i < insideFenceSheeps.Count; i++)
+        {
+            if (insideFenceSheeps[i].GetComponent<Sheep>() != null)
+            {
+                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = true;
+                InsideSheepMove(insideFenceSheeps[i].GetComponent<Sheep>());
+            }
+        }
+    }
+    public void InsideSheepMove(Sheep sheep)
+    {
+        sheep.InsideMove();
     }
 }
