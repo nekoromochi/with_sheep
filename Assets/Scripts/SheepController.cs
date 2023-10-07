@@ -24,8 +24,7 @@ public class SheepController : MonoBehaviour
         int rnd = Random.Range(0, 4);
         //Scenes‚Ì’†‚Ésheep‚ğ¶‚İo‚µ‚Ä‚¢‚éB
         GameObject go = Instantiate(sheepPrefab);
-        mainController.existedSheeps.Add(go);
-        Debug.Log('a');
+        mainController.outsideFenceSheeps.Add(go);
         if (rnd == 0)
         {
             go.transform.position = new Vector2(-9,0);
