@@ -19,15 +19,16 @@ public class SheepController : MonoBehaviour
 
     public void Spawn()
     {
-       int rnd = Random.Range(0, 4);
+        int rnd = Random.Range(0, 4);
+        //Scenes‚Ì’†‚Ésheep‚ğ¶‚İo‚µ‚Ä‚¢‚éB
         GameObject go = Instantiate(sheepPrefab);
-        Debug.Log(rnd);
+
         if (rnd == 0)
         {
             go.transform.position = new Vector2(-9,0);
         }else if(rnd == 1)
         {
-            go.transform.position= new Vector2(0,-5);
+            go.transform.position= new Vector2(0,-4);
         }else if (rnd == 2)
         {
             go.transform.position = new Vector2(9,0);
@@ -36,6 +37,8 @@ public class SheepController : MonoBehaviour
         {
             go.transform.position = new Vector2(0,5);
         }
-        
+        //Gameobject‚Ìsheepscript‚ğæ“¾‚·‚é
+        Sheep sheep = go.GetComponent<Sheep>();
+        sheep.spawnPoint = rnd;
     }
 }
