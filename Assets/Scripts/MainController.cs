@@ -18,6 +18,8 @@ public class MainController : MonoBehaviour
     public SheepController sheepController;
 
     public List<GameObject> outsideFenceSheeps = new List<GameObject>();
+    public List<GameObject> insideFenceSheeps = new List<GameObject>();
+
 
     void Start()
     {
@@ -61,5 +63,11 @@ public class MainController : MonoBehaviour
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
+    }
+
+    public void OnDestroy()
+    {
+        insideFenceSheeps = new List<GameObject>();
+        outsideFenceSheeps = new List<GameObject>();
     }
 }
