@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DogController : MonoBehaviour
 {
-    Vector2 myPos = Vector2.zero;
+    Vector2 mySpeed = Vector2.zero;
+    Rigidbody2D rigitBody = default;
     [SerializeField] float advSpeed = 0;
 
     void Awake()
     {
-        myPos = transform.position;
+        rigitBody = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -19,34 +20,43 @@ public class DogController : MonoBehaviour
 
     void Update()
     {
-        Vector2 pos = Vector2.zero;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        
+        Vector2 Speed = Vector2.zero;
+        mySpeed = Vector2.zero;
+        rigitBody.velocity = Vector2.zero;
 
         // キー入力
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            pos.x = -1; 
+            Speed.x = -1;
         }
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            pos.x = 1; 
+            Speed.x = 1;
         }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) 
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            pos.y = 1;
+            Speed.y = 1;
         }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) 
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            pos.y = -1; 
+            Speed.y = -1;
         }
 
         // このループ中にキー入力が行われた場合通過
-        if (pos.x != 0 || pos.y != 0)
+        if (Speed.x != 0 || Speed.y != 0)
         {
             // 正規化
-            pos.Normalize();
+            Speed.Normalize();
             // 移動
-            myPos += pos * advSpeed * Time.deltaTime;
-            transform.position = myPos;
+            mySpeed = Speed * advSpeed;
+            rigitBody.velocity = mySpeed;
         }
+        
     }
 }
