@@ -214,6 +214,7 @@ MonoBehaviour:
   rangeA: {fileID: 0}
   rangeB: {fileID: 0}
   escapeTimeLimit: 2
+  mySprite: {fileID: 1868300605605182579}
 --- !u!61 &522616547043933599
 BoxCollider2D:
   m_ObjectHideFlags: 0

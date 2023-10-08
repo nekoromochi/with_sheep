@@ -7,6 +7,7 @@ public class DogController : MonoBehaviour
     Vector2 mySpeed = Vector2.zero;
     Rigidbody2D rigitBody = default;
     [SerializeField] float advSpeed = 0;
+    [SerializeField] GameObject mySprite;
 
     void Awake()
     {
@@ -34,10 +35,12 @@ public class DogController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             Speed.x = -1;
+            if(mySprite.GetComponent<SpriteRenderer>().flipX != false) { mySprite.GetComponent<SpriteRenderer>().flipX = false; }
         }
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             Speed.x = 1;
+            if (mySprite.GetComponent<SpriteRenderer>().flipX != true) { mySprite.GetComponent<SpriteRenderer>().flipX = true; }
         }
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {

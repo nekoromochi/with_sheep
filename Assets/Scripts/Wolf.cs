@@ -19,6 +19,7 @@ public class Wolf : MonoBehaviour
     private Vector3 escapeStartPos = Vector3.zero;
     private float escapeTime = 0;
     [SerializeField] private float escapeTimeLimit = 2.0f;
+    [SerializeField] GameObject mySprite;
     // プロパティ
     public Transform EscapePoint { set {  escapePoint = value; } }
 
@@ -49,12 +50,14 @@ public class Wolf : MonoBehaviour
                 break;
             case 1:
                 position.x -= speed;
+                if (mySprite.GetComponent<SpriteRenderer>().flipX != false) { mySprite.GetComponent<SpriteRenderer>().flipX = false; }
                 break;
             case 2:
                 position.y += speed;
                 break;
             case 3:
                 position.x += speed;
+                if (mySprite.GetComponent<SpriteRenderer>().flipX != true) { mySprite.GetComponent<SpriteRenderer>().flipX = true; }
                 break;
         }
         transform.position = position;
