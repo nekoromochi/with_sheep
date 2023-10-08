@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  timeLimit: 60
+  timeLimit: 120
   sheepIcon: {fileID: 639931430}
   gauge: {fileID: 1542741935}
 --- !u!1 &303978953
@@ -711,6 +711,10 @@ MonoBehaviour:
   bottomSpawnPoint: {x: 0.5, y: -2.5}
   leftSpawnPoint: {x: -4, y: 1}
   rightSpawnPoint: {x: 7, y: 1}
+  topLeftEscapePoint: {fileID: 497473205}
+  topRightEscapePoint: {fileID: 611971086}
+  bottomLeftEscapePoint: {fileID: 2107218046}
+  bottomRightEscapePoint: {fileID: 797197648}
 --- !u!1 &354633984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1561,7 @@ MonoBehaviour:
   nightmareTime: 0
   outsideFenceSheeps: []
   insideFenceSheeps: []
+  nightmareCutInPrefab: {fileID: 979303435021047415, guid: 9793309670306de4d9d8780adf448556, type: 3}
 --- !u!4 &686651186
 Transform:
   m_ObjectHideFlags: 0
