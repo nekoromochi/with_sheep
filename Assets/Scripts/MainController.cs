@@ -37,7 +37,7 @@ public class MainController : MonoBehaviour
     void Update()
     {
         sheepSpawnTime += Time.deltaTime;
-        if (sheepSpawnTime > 1.5 && !isCinderellaTime)
+        if (sheepSpawnTime > 1f && !isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
