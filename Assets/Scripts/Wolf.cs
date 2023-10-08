@@ -46,14 +46,14 @@ public class Wolf : MonoBehaviour
         switch (startPosition)
         {
             case 0:
-                position.y -= speed;
+                position.y -= speedÅ@/ 2;
                 break;
             case 1:
                 position.x -= speed;
                 if (mySprite.GetComponent<SpriteRenderer>().flipX != false) { mySprite.GetComponent<SpriteRenderer>().flipX = false; }
                 break;
             case 2:
-                position.y += speed;
+                position.y += speed / 2;
                 break;
             case 3:
                 position.x += speed;

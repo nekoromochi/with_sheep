@@ -662,10 +662,10 @@ MonoBehaviour:
   bottomSpawnPoint: {x: 0.5, y: -2.5}
   leftSpawnPoint: {x: -4, y: 1}
   rightSpawnPoint: {x: 7, y: 1}
-  topLeftEscapePoint: {fileID: 0}
-  topRightEscapePoint: {fileID: 0}
-  bottomLeftEscapePoint: {fileID: 0}
-  bottomRightEscapePoint: {fileID: 0}
+  topLeftEscapePoint: {fileID: 497473205}
+  topRightEscapePoint: {fileID: 611971086}
+  bottomLeftEscapePoint: {fileID: 2107218046}
+  bottomRightEscapePoint: {fileID: 797197648}
 --- !u!1 &354633984
 GameObject:
   m_ObjectHideFlags: 0

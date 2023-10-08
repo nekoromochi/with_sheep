@@ -154,6 +154,7 @@ public class Sheep : MonoBehaviour
 
     public void Escape()
     {
+        if (isEscape) { return; }
         // êiçsãóó£éZèo
         escapeStartPos = transform.position;
         escapeDistance = escapePoint.position - startPos;
