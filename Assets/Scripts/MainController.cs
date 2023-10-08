@@ -65,7 +65,7 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 0.2f && isNightmareTime)
+        if (wolfSpawnCheckTime > 10.0f && isNightmareTime)
 
         {
             wolfSpawnCheckTime = 0;
@@ -104,16 +104,25 @@ public class MainController : MonoBehaviour
 
     public void wolfAttack()
     {
-        for (int i = 0; i < 10; i++)
+        int count = insideFenceSheeps.Count;
+        int cnt = 0;
+        int i = insideFenceSheeps.Count - 1;
+        while (true)
         {
-            int count = insideFenceSheeps.Count;
-            if (count > 0)
+            // 10回Escapeするか、インデックスが0未満になったらループを抜ける
+            if (cnt == 10 || i < 0)
             {
-                Destroy(insideFenceSheeps[count - 1]);
-                insideFenceSheeps.RemoveAt(count - 1);
-                //insideFenceSheeps[count - 1].GetComponent<Sheep>().IsInside = false;
-                //insideFenceSheeps[count - 1].GetComponent<Sheep>().Escape();
+                break;
             }
+            if (!insideFenceSheeps[i].GetComponent<Sheep>().IsEscape)
+            {
+                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = false;
+                insideFenceSheeps[i].GetComponent<Sheep>().Escape();
+                // 重要
+                cnt++;
+            }
+            // 重要
+            i--;
         }
     }
     public void CheckoutInsideSheep()
