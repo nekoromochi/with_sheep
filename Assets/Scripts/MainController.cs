@@ -14,8 +14,6 @@ public class MainController : MonoBehaviour
 
     public SheepMeter sheepMeter;
 
-
-    // Start is called before the first frame update
     public float sheepSpawnTime = 0;
     public float cinderellaTime = 0;
     private bool isCinderellaTime = false;
@@ -26,11 +24,13 @@ public class MainController : MonoBehaviour
     public List<GameObject> outsideFenceSheeps = new List<GameObject>();
     public List<GameObject> insideFenceSheeps = new List<GameObject>();
 
+    [SerializeField]
+    private GameObject nightmareCutInPrefab;
+
 
     void Start()
     {
         Application.targetFrameRate = 30;
-
     }
 
     // Update is called once per frame
@@ -52,12 +52,13 @@ public class MainController : MonoBehaviour
         cinderellaTime += Time.deltaTime;
         float sheepPercentage = sheepMeter.sheepPercentage;
         
-        if (cinderellaTime < 5 && !isCinderellaTime)
+        // シンデレラタイム突入処理
+        if (cinderellaTime < 20f && !isCinderellaTime && !isNightmareTime)
         {
             cinderellaTime = 0;
             isCinderellaTime = true;
         }
-        if (cinderellaTime > 10 && isCinderellaTime)
+        if (cinderellaTime > 5f && isCinderellaTime)
         {
             cinderellaTime = 0;
             isCinderellaTime = false;
@@ -65,13 +66,13 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 3.0f && isNightmareTime)
+        if (wolfSpawnCheckTime > 2.0f && isNightmareTime)
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
 
-        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
+        if (wolfSpawnCheckTime > 5.0f && !isNightmareTime)
 
         {
             wolfSpawnCheckTime = 0;
@@ -80,13 +81,15 @@ public class MainController : MonoBehaviour
 
             nightmareTime += Time.deltaTime;
         
-        if (sheepPercentage < 20 && !isNightmareTime)
+        // 悪夢モード突入処理
+        if (nightmareTime > 21f && !isNightmareTime && !isCinderellaTime)
         {
             nightmareTime = 0;
             isNightmareTime = true;
+            EnterNightmareMode();
 
         }
-        if(nightmareTime > 10 && isNightmareTime)
+        if (nightmareTime > 10.0f && isNightmareTime)
         {
             nightmareTime = 0;
             isNightmareTime = false;
@@ -128,8 +131,8 @@ public class MainController : MonoBehaviour
         int i = insideFenceSheeps.Count - 1;
         while (true)
         {
-            // 5回Escapeするか、インデックスが0未満になったらループを抜ける
-            if (cnt == 5 || i < 0)
+            // 1回Escapeするか、インデックスが0未満になったらループを抜ける
+            if (cnt == 1 || i < 0)
             {
                 break;
             }
@@ -154,6 +157,11 @@ public class MainController : MonoBehaviour
                 insideFenceSheeps[i].GetComponent<Sheep>().IsInside = true;
             }
         }
+    }
+
+    private void EnterNightmareMode()
+    {
+        GameObject nightmareCutIn = Instantiate(nightmareCutInPrefab);
     }
     
 }
