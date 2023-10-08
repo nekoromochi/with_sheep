@@ -24,7 +24,6 @@ public class Sheep : MonoBehaviour
     private Vector3 startPos = Vector3.zero;
     private Vector3 endPos = Vector3.zero;
     private Vector3 moveDistance = Vector3.zero;
-    Rigidbody2D rb2d = default;
 
 
     private Transform escapePoint;
@@ -52,9 +51,7 @@ public class Sheep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /* -- h-sato Edit2/4  Start -- */
-        rb2d = GetComponent<Rigidbody2D>();
-        /* -- h-sato Edit2/4  End   -- */
+       
     }
 
     // Update is called once per frame
@@ -154,7 +151,6 @@ public class Sheep : MonoBehaviour
 
     public void Escape()
     {
-        if (isInside) { return; }
         // êiçsãóó£éZèo
         escapeStartPos = transform.position;
         escapeDistance = escapePoint.position - startPos;

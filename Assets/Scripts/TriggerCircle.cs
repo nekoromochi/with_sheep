@@ -17,7 +17,7 @@ public class TriggerCircle : MonoBehaviour
 
         if (collision.gameObject.layer == wolfLayerNum)
         {
-            // collision.GetComponent<Wolf>().EsCape();
+            collision.GetComponent<Wolf>().Escape();
             Debug.Log("WolfEscape!!");
         }
     }

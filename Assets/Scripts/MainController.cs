@@ -65,7 +65,7 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 10.0f && isNightmareTime)
+        if (wolfSpawnCheckTime > 5.0f && isNightmareTime)
 
         {
             wolfSpawnCheckTime = 0;
