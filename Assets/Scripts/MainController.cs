@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainController : MonoBehaviour
@@ -12,8 +14,6 @@ public class MainController : MonoBehaviour
 
     public SheepMeter sheepMeter;
 
-
-    // Start is called before the first frame update
     public float sheepSpawnTime = 0;
     public float cinderellaTime = 0;
     private bool isCinderellaTime = false;
@@ -25,6 +25,9 @@ public class MainController : MonoBehaviour
     public List<GameObject> insideFenceSheeps = new List<GameObject>();
     public BigWolf bigWolf;
 
+    [SerializeField]
+    private GameObject nightmareCutInPrefab;
+
 
     void Start()
     {
@@ -35,13 +38,13 @@ public class MainController : MonoBehaviour
     void Update()
     {
         sheepSpawnTime += Time.deltaTime;
-        if (sheepSpawnTime > 1 && !isCinderellaTime)
+        if (sheepSpawnTime > 1f && !isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
         }
 
-        if (sheepSpawnTime > 0.2f && isCinderellaTime)
+        if (sheepSpawnTime > 0.4f && isCinderellaTime)
         {
             sheepSpawnTime = 0;
             sheepController.Spawn();
@@ -50,13 +53,14 @@ public class MainController : MonoBehaviour
         cinderellaTime += Time.deltaTime;
         float sheepPercentage = sheepMeter.sheepPercentage;
         
-        if (sheepPercentage > 80 && !isCinderellaTime)
+        // シンデレラタイム突入処理
+        if (cinderellaTime < 20f && !isCinderellaTime && !isNightmareTime)
         {
             Debug.Log("シンデレラタイムstart");
             cinderellaTime = 0;
             isCinderellaTime = true;
         }
-        if (cinderellaTime > 10 && isCinderellaTime)
+        if (cinderellaTime > 5f && isCinderellaTime)
         {
             cinderellaTime = 0;
             isCinderellaTime = false;
@@ -66,15 +70,39 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 0.2f && isNightmareTime)
+        if (wolfSpawnCheckTime > 2.0f && isNightmareTime)
+        {
+            wolfSpawnCheckTime = 0;
+            wolfController.Spawn();
+        }
+
+        if (wolfSpawnCheckTime > 5.0f && !isNightmareTime)
 
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
             bigWolf.Spawn();
         }
-        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
 
+            nightmareTime += Time.deltaTime;
+        
+        // 悪夢モード突入処理
+        if (nightmareTime > 21f && !isNightmareTime && !isCinderellaTime)
+        {
+            nightmareTime = 0;
+            isNightmareTime = true;
+            EnterNightmareMode();
+
+        }
+        if (nightmareTime > 10.0f && isNightmareTime)
+        {
+            nightmareTime = 0;
+            isNightmareTime = false;
+        }
+
+        CheckoutInsideSheep();
+
+        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
@@ -95,7 +123,6 @@ public class MainController : MonoBehaviour
             isNightmareTime = false;
             Debug.Log("悪夢タイムend");
         }
-
     }
 
     public void OnDestroy()
@@ -103,4 +130,45 @@ public class MainController : MonoBehaviour
         insideFenceSheeps = new List<GameObject>();
         outsideFenceSheeps = new List<GameObject>();
     }
+
+    public void wolfAttack()
+    {
+        int count = insideFenceSheeps.Count;
+        int cnt = 0;
+        int i = insideFenceSheeps.Count - 1;
+        while (true)
+        {
+            // 1回Escapeするか、インデックスが0未満になったらループを抜ける
+            if (cnt == 1 || i < 0)
+            {
+                break;
+            }
+            Sheep targetSheep = insideFenceSheeps[i].GetComponent<Sheep>();
+            if (!targetSheep.IsEscape)
+            {
+                targetSheep.IsInside = false;
+                targetSheep.Escape();
+                // 重要
+                cnt++;
+            }
+            // 重要
+            i--;
+        }
+    }
+    public void CheckoutInsideSheep()
+    {
+        for (int i = 0; i < insideFenceSheeps.Count; i++)
+        {
+            if (insideFenceSheeps[i].GetComponent<Sheep>() != null)
+            {
+                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = true;
+            }
+        }
+    }
+
+    private void EnterNightmareMode()
+    {
+        GameObject nightmareCutIn = Instantiate(nightmareCutInPrefab);
+    }
+    
 }

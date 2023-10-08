@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScenesContoller : MonoBehaviour
 {
     public MainController mainController;
     public SheepController sheepController;
     public SheepMeter sheepMeter;
-    float gameOver;
+    public float minGameTimeChecker = 0;
+    private float deadGameOver = 0;
+    private float sleeplessGameOver = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +20,32 @@ public class ScenesContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        minGameTimeChecker += Time.deltaTime;
         float sheepPercentage = sheepMeter.sheepPercentage;
-        if (sheepPercentage > 90 || sheepPercentage < 10)
+        if (sheepPercentage > 90 && minGameTimeChecker > 8f)
         {
-            gameOver += Time.deltaTime;
+            deadGameOver += Time.deltaTime;
 
+        }
+        else if (sheepPercentage < 10 && minGameTimeChecker > 8f)
+        {
+            sleeplessGameOver += Time.deltaTime;
         }
         else
         {
-            gameOver = 0;
+            deadGameOver = 0;
         }
-        if (gameOver > 2.0f)
+
+        if (deadGameOver > 2.0f)
         {
-            gameOver = 0;
+            SceneManager.LoadScene("OversleepScene");
         }
+
+        if (sleeplessGameOver > 2.0f)
+        {
+            SceneManager.LoadScene("SleepyScene");
+        }
+
 
     }
 }

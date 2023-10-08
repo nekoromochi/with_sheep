@@ -8,7 +8,7 @@ public class SheepMeter : MonoBehaviour
     public float sheepPercentage;
     public GameObject cursor;
     private const float maxLength = 4.0f;
-    private const int maxSheepNum = 50; 
+    public const int maxSheepNum = 25; 
     public MainController mainController;
     // Start is called before the first frame update
     void Start()
