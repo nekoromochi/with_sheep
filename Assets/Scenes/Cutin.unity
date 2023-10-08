@@ -517,6 +517,10 @@ MonoBehaviour:
   bottomSpawnPoint: {x: 0.5, y: -2.5}
   leftSpawnPoint: {x: -4, y: 1}
   rightSpawnPoint: {x: 7, y: 1}
+  topLeftEscapePoint: {fileID: 1233954180}
+  topRightEscapePoint: {fileID: 796409312}
+  bottomLeftEscapePoint: {fileID: 2053794411}
+  bottomRightEscapePoint: {fileID: 1343358461}
 --- !u!1001 &397178475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1066,6 +1070,7 @@ MonoBehaviour:
   sheepSpawnTime: 0
   cinderellaTime: 0
   sheepController: {fileID: 1557535973}
+  nightmareTime: 0
   outsideFenceSheeps: []
   insideFenceSheeps: []
 --- !u!4 &686651186
