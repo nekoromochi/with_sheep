@@ -65,7 +65,7 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 0.2f && isNightmareTime)
+        if (wolfSpawnCheckTime > 3f && isNightmareTime)
 
         {
             wolfSpawnCheckTime = 0;
@@ -75,7 +75,6 @@ public class MainController : MonoBehaviour
         CheckoutInsideSheep();
 
         if (wolfSpawnCheckTime > 1 && !isNightmareTime)
-
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
