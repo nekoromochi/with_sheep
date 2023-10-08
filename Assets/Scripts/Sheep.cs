@@ -42,7 +42,11 @@ public class Sheep : MonoBehaviour
         get { return isInside; }
         set { isInside = value; }
     }
-    public bool IsEscape {  set { isEscape = value; } }
+    public bool IsEscape 
+    { 
+        get { return isEscape; }
+        set { isEscape = value; }
+    }
     /* -- h-sato Edit1/4  End   -- */
 
     // Start is called before the first frame update
@@ -57,12 +61,12 @@ public class Sheep : MonoBehaviour
     void Update()
     {
         /* -- h-sato Edit3/4  Start -- */
-        if (isEscape && !isInside)
+        if (isEscape)
         {
             EscapeMove();
             return;
         }
-        if (!isEscape && isInside)
+        if (isInside)
         {
             InsideMove();
             return;
@@ -155,6 +159,7 @@ public class Sheep : MonoBehaviour
         escapeStartPos = transform.position;
         escapeDistance = escapePoint.position - startPos;
         this.IsEscape = true;
+        mainController.insideFenceSheeps.Remove(this.gameObject);
         Debug.Log("SheepEscape Now");
     }
 
@@ -165,7 +170,7 @@ public class Sheep : MonoBehaviour
         transform.position = escapeStartPos + frameMove;
         if (escapeTime > escapeTimeLimit)
         {
-            mainController.insideFenceSheeps.Remove(this.gameObject);
+            
             Destroy(this.gameObject);
         }
 
