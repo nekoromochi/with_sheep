@@ -128,15 +128,16 @@ public class MainController : MonoBehaviour
         int i = insideFenceSheeps.Count - 1;
         while (true)
         {
-            // 10回Escapeするか、インデックスが0未満になったらループを抜ける
-            if (cnt == 10 || i < 0)
+            // 5回Escapeするか、インデックスが0未満になったらループを抜ける
+            if (cnt == 5 || i < 0)
             {
                 break;
             }
-            if (!insideFenceSheeps[i].GetComponent<Sheep>().IsEscape)
+            Sheep targetSheep = insideFenceSheeps[i].GetComponent<Sheep>();
+            if (!targetSheep.IsEscape)
             {
-                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = false;
-                insideFenceSheeps[i].GetComponent<Sheep>().Escape();
+                targetSheep.IsInside = false;
+                targetSheep.Escape();
                 // 重要
                 cnt++;
             }

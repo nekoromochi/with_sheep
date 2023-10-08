@@ -21,7 +21,7 @@ public class ScenesContoller : MonoBehaviour
     {
         minGameTimeChecker += Time.deltaTime;
         float sheepPercentage = sheepMeter.sheepPercentage;
-        if ((sheepPercentage > 90 || sheepPercentage < 10) && minGameTimeChecker > 1f)
+        if ((sheepPercentage > 90 || sheepPercentage < 10) && minGameTimeChecker > 8f)
         {
             gameOver += Time.deltaTime;
             Debug.Log("count now");
