@@ -71,12 +71,13 @@ public class Wolf : MonoBehaviour
         {
             mainController.wolfAttack();
             isInside = true;
+            mySprite.GetComponent<Animator>().SetBool("Thread", true);
         }
     }
 
     public void Escape()
     {
-
+        mySprite.GetComponent<Animator>().SetBool("Thread", false);
         // êiçsãóó£éZèo
         escapeStartPos = transform.position;
         escapeDistance = escapePoint.position - startPos;
