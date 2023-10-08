@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SheepGauge : MonoBehaviour
 {
@@ -27,9 +28,7 @@ public class SheepGauge : MonoBehaviour
         
         if (time > timeLimit)
         {
-            sheepIcon.transform.localPosition = new Vector3(startX, 0, 0);
-            time = 0;
-            Debug.Log("timeover");
+            SceneManager.LoadScene("ClearScene");
         }
     }
 
