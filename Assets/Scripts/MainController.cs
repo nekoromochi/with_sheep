@@ -26,6 +26,8 @@ public class MainController : MonoBehaviour
 
     [SerializeField]
     private GameObject nightmareCutInPrefab;
+    [SerializeField]
+    private GameObject cinderellaCutInPrefab;
 
 
     void Start()
@@ -50,15 +52,15 @@ public class MainController : MonoBehaviour
         }
 
         cinderellaTime += Time.deltaTime;
-        float sheepPercentage = sheepMeter.sheepPercentage;
         
         // シンデレラタイム突入処理
-        if (cinderellaTime < 20f && !isCinderellaTime && !isNightmareTime)
+        if (cinderellaTime > 20f && !isCinderellaTime && !isNightmareTime)
         {
             cinderellaTime = 0;
             isCinderellaTime = true;
+            EnterCinderellaMode();
         }
-        if (cinderellaTime > 5f && isCinderellaTime)
+        if (cinderellaTime > 10f && isCinderellaTime)
         {
             cinderellaTime = 0;
             isCinderellaTime = false;
@@ -66,13 +68,13 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 2.0f && isNightmareTime)
+        if (wolfSpawnCheckTime > 1.5f && isNightmareTime)
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
         }
 
-        if (wolfSpawnCheckTime > 5.0f && !isNightmareTime)
+        if (wolfSpawnCheckTime > 3f && !isNightmareTime)
 
         {
             wolfSpawnCheckTime = 0;
@@ -91,31 +93,11 @@ public class MainController : MonoBehaviour
         }
         if (nightmareTime > 10.0f && isNightmareTime)
         {
-            nightmareTime = 0;
             isNightmareTime = false;
+            nightmareTime = 0;
         }
 
         CheckoutInsideSheep();
-
-        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
-        {
-            wolfSpawnCheckTime = 0;
-            wolfController.Spawn();
-        }
-
-            nightmareTime += Time.deltaTime;
-        
-        if (sheepPercentage < 20 && !isNightmareTime)
-        {
-                nightmareTime = 0;
-            isNightmareTime = true;
-
-        }
-        if(nightmareTime > 10 && isNightmareTime)
-        {
-            nightmareTime = 0;
-            isNightmareTime = false;
-        }
     }
 
     public void OnDestroy()
@@ -161,7 +143,11 @@ public class MainController : MonoBehaviour
 
     private void EnterNightmareMode()
     {
-        GameObject nightmareCutIn = Instantiate(nightmareCutInPrefab);
+        Instantiate(nightmareCutInPrefab);
     }
-    
+    private void EnterCinderellaMode()
+    {
+        Instantiate(cinderellaCutInPrefab);
+    }
+
 }

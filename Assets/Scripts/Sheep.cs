@@ -59,7 +59,7 @@ public class Sheep : MonoBehaviour
     void Update()
     {
         /* -- h-sato Edit3/4  Start -- */
-        if (isEscape)
+        if (isEscape && !isInside)
         {
             EscapeMove();
             return;
