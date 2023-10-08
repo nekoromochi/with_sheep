@@ -21,7 +21,6 @@ public class ScenesContoller : MonoBehaviour
         if (sheepPercentage > 90 || sheepPercentage < 10)
         {
             gameOver += Time.deltaTime;
-            Debug.Log("count now");
 
         }
         else
@@ -30,8 +29,8 @@ public class ScenesContoller : MonoBehaviour
         }
         if (gameOver > 2.0f)
         {
-            Debug.Log("GameOver");
             gameOver = 0;
         }
+
     }
 }
