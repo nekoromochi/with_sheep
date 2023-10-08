@@ -8,7 +8,7 @@ public class Sheep : MonoBehaviour
 {
     public int id;
     public MainController mainController;
-    public float speed = 0.05f;
+    public float speed = 0.01f;
     //sheep‚ªƒXƒ|[ƒ“‚µ‚Ä‚¢‚éêŠ‚Ìî•ñ‚ğ“Ç‚İ‚ŞêŠ
     public int spawnPoint;
 
