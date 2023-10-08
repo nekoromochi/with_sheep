@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wolf : MonoBehaviour
 {
-    public float speed = 0.05f;
+    public float speed = 0.01f;
     public int startPosition;
     public MainController mainController;
     private float wolfLifeTime = 1.0f;

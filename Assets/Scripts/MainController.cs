@@ -65,8 +65,7 @@ public class MainController : MonoBehaviour
 
         wolfSpawnCheckTime += Time.deltaTime;
         
-        if (wolfSpawnCheckTime > 5.0f && isNightmareTime)
-
+        if (wolfSpawnCheckTime > 3.0f && isNightmareTime)
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
@@ -94,6 +93,26 @@ public class MainController : MonoBehaviour
         }
 
         CheckoutInsideSheep();
+
+        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
+        {
+            wolfSpawnCheckTime = 0;
+            wolfController.Spawn();
+        }
+
+            nightmareTime += Time.deltaTime;
+        
+        if (sheepPercentage < 20 && !isNightmareTime)
+        {
+                nightmareTime = 0;
+            isNightmareTime = true;
+
+        }
+        if(nightmareTime > 10 && isNightmareTime)
+        {
+            nightmareTime = 0;
+            isNightmareTime = false;
+        }
     }
 
     public void OnDestroy()
@@ -109,15 +128,16 @@ public class MainController : MonoBehaviour
         int i = insideFenceSheeps.Count - 1;
         while (true)
         {
-            // 10回Escapeするか、インデックスが0未満になったらループを抜ける
-            if (cnt == 10 || i < 0)
+            // 5回Escapeするか、インデックスが0未満になったらループを抜ける
+            if (cnt == 5 || i < 0)
             {
                 break;
             }
-            if (!insideFenceSheeps[i].GetComponent<Sheep>().IsEscape)
+            Sheep targetSheep = insideFenceSheeps[i].GetComponent<Sheep>();
+            if (!targetSheep.IsEscape)
             {
-                insideFenceSheeps[i].GetComponent<Sheep>().IsInside = false;
-                insideFenceSheeps[i].GetComponent<Sheep>().Escape();
+                targetSheep.IsInside = false;
+                targetSheep.Escape();
                 // 重要
                 cnt++;
             }
