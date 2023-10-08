@@ -31,6 +31,7 @@ public class Sheep : MonoBehaviour
     private Vector3 escapeStartPos = Vector3.zero;
     private float escapeTime = 0;
     [SerializeField] private float escapeTimeLimit = 2.0f;
+    [SerializeField] GameObject mySprite;
 
     // プロパティ
     public Transform RangeA { set { rangeA = value; } }
@@ -74,12 +75,14 @@ public class Sheep : MonoBehaviour
         {
             case 0:
                 position.x += speed;
+                if (mySprite.GetComponent<SpriteRenderer>().flipX != true) { mySprite.GetComponent<SpriteRenderer>().flipX = true; }
                 break;
             case 1:
                 position.y += speed;
                 break;
             case 2:
                 position.x -= speed;
+                if (mySprite.GetComponent<SpriteRenderer>().flipX != false) { mySprite.GetComponent<SpriteRenderer>().flipX = false; }
                 break;
             case 3:
                 position.y -= speed;
@@ -151,6 +154,7 @@ public class Sheep : MonoBehaviour
 
     public void Escape()
     {
+        if (isEscape) { return; }
         // 進行距離算出
         escapeStartPos = transform.position;
         escapeDistance = escapePoint.position - startPos;

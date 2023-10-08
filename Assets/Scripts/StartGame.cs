@@ -15,7 +15,7 @@ public class StartGame : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         //OnClickŽž‚ÉŽÀs‚·‚éƒƒ\ƒbƒh‚ð“o˜^
         button.onClick.AddListener(()
-             => SceneManager.LoadScene("InGameScene"));
+             => SceneManager.LoadScene("LoadScene"));
         //audioSource.PlayOneShot(audioSource.clip);
         //=> GameManager.Instance.ChangeGameScene());
     }
