@@ -23,7 +23,6 @@ public class MainController : MonoBehaviour
     private bool isNightmareTime = false;
     public List<GameObject> outsideFenceSheeps = new List<GameObject>();
     public List<GameObject> insideFenceSheeps = new List<GameObject>();
-    public BigWolf bigWolf;
 
     [SerializeField]
     private GameObject nightmareCutInPrefab;
@@ -56,7 +55,6 @@ public class MainController : MonoBehaviour
         // シンデレラタイム突入処理
         if (cinderellaTime < 20f && !isCinderellaTime && !isNightmareTime)
         {
-            Debug.Log("シンデレラタイムstart");
             cinderellaTime = 0;
             isCinderellaTime = true;
         }
@@ -64,8 +62,6 @@ public class MainController : MonoBehaviour
         {
             cinderellaTime = 0;
             isCinderellaTime = false;
-            Debug.Log("シンデレラタイムend");
-
         }
 
         wolfSpawnCheckTime += Time.deltaTime;
@@ -81,7 +77,6 @@ public class MainController : MonoBehaviour
         {
             wolfSpawnCheckTime = 0;
             wolfController.Spawn();
-            bigWolf.Spawn();
         }
 
             nightmareTime += Time.deltaTime;
@@ -112,7 +107,6 @@ public class MainController : MonoBehaviour
         
         if (sheepPercentage < 20 && !isNightmareTime)
         {
-            Debug.Log("悪夢タイムstart");
                 nightmareTime = 0;
             isNightmareTime = true;
 
@@ -121,7 +115,6 @@ public class MainController : MonoBehaviour
         {
             nightmareTime = 0;
             isNightmareTime = false;
-            Debug.Log("悪夢タイムend");
         }
     }
 
