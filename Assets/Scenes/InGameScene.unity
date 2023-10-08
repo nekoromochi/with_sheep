@@ -1513,6 +1513,7 @@ MonoBehaviour:
   outsideFenceSheeps: []
   insideFenceSheeps: []
   nightmareCutInPrefab: {fileID: 979303435021047415, guid: 9793309670306de4d9d8780adf448556, type: 3}
+  cinderellaCutInPrefab: {fileID: 4176448000499060125, guid: 9be673c0f50b64040934d2f8c98bdfd5, type: 3}
 --- !u!4 &686651186
 Transform:
   m_ObjectHideFlags: 0
