@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  timeLimit: 10
+  timeLimit: 60
   sheepIcon: {fileID: 639931430}
   gauge: {fileID: 1542741935}
 --- !u!1 &303978953
