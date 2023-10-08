@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         state = States.GamePlaying;
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("InGameScene");
     }
 
     public void ChangeHowToPlayScene()
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
 
         //GameScene‚Ö‘JˆÚ
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("InGameScene");
     }
 
     public void ChangeTitleScene()

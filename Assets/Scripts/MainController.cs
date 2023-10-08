@@ -71,6 +71,27 @@ public class MainController : MonoBehaviour
             wolfController.Spawn();
         }
 
+        if (wolfSpawnCheckTime > 1 && !isNightmareTime)
+
+        {
+            wolfSpawnCheckTime = 0;
+            wolfController.Spawn();
+        }
+
+            nightmareTime += Time.deltaTime;
+        
+        if (sheepPercentage < 20 && !isNightmareTime)
+        {
+            nightmareTime = 0;
+            isNightmareTime = true;
+
+        }
+        if(nightmareTime > 10 && isNightmareTime)
+        {
+            nightmareTime = 0;
+            isNightmareTime = false;
+        }
+
         CheckoutInsideSheep();
 
         if (wolfSpawnCheckTime > 1 && !isNightmareTime)
