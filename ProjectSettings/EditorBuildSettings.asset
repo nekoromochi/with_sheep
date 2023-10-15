@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/InGameScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: 485e5edbdac1e914e9d5213aabf33e5f
+  - enabled: 1
+    path: Assets/Scenes/HowToPlayScene.unity
+    guid: fe33c819aaa22864dbc3baf65a0f360b
+  - enabled: 1
+    path: Assets/Scenes/LoadScene.unity
+    guid: 5c187588df4097f41a82ff26a5f9188c
+  - enabled: 1
+    path: Assets/Scenes/InGameScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/OversleepScene.unity
     guid: 04c0c04cd8f5edc4aba1422b66159f92
@@ -18,12 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SleepyScene.unity
     guid: 7b7dcbe9cc12d7d48a892855e21d66aa
   - enabled: 1
-    path: Assets/Scenes/HowToPlayScene.unity
-    guid: fe33c819aaa22864dbc3baf65a0f360b
-  - enabled: 1
     path: Assets/Scenes/ClearScene.unity
     guid: 207459740c2b2c447b54deac0cb00fe8
-  - enabled: 1
-    path: Assets/Scenes/LoadScene.unity
-    guid: 5c187588df4097f41a82ff26a5f9188c
   m_configObjects: {}
