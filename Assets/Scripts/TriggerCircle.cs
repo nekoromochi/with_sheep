@@ -12,13 +12,11 @@ public class TriggerCircle : MonoBehaviour
         {
             
             collision.GetComponent<Sheep>().Escape();
-            Debug.Log("SheepEscape!!");
         }
 
         if (collision.gameObject.layer == wolfLayerNum)
         {
             collision.GetComponent<Wolf>().Escape();
-            Debug.Log("WolfEscape!!");
         }
     }
 }

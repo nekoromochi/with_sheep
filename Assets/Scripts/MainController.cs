@@ -8,9 +8,8 @@ public class MainController : MonoBehaviour
 {
     private float wolfSpawnCheckTime = 0; // 狼のスポーンを管理する時間
 
-    public float wolfSpawnSeconds = 2;
 
-    public WolfController wolfController;
+    [SerializeField] private WolfController wolfController;
 
     public SheepMeter sheepMeter;
 
@@ -66,22 +65,9 @@ public class MainController : MonoBehaviour
             isCinderellaTime = false;
         }
 
-        wolfSpawnCheckTime += Time.deltaTime;
-        
-        if (wolfSpawnCheckTime > 1.5f && isNightmareTime)
-        {
-            wolfSpawnCheckTime = 0;
-            wolfController.Spawn();
-        }
+        WolfUpdate();
 
-        if (wolfSpawnCheckTime > 3f && !isNightmareTime)
-
-        {
-            wolfSpawnCheckTime = 0;
-            wolfController.Spawn();
-        }
-
-            nightmareTime += Time.deltaTime;
+        nightmareTime += Time.deltaTime;
         
         // 悪夢モード突入処理
         if (nightmareTime > 21f && !isNightmareTime && !isCinderellaTime)
@@ -130,6 +116,36 @@ public class MainController : MonoBehaviour
             i--;
         }
     }
+
+    private void WolfUpdate()
+    {
+        WolfSpawner();
+        WolfsAttack();
+    }
+
+    private void WolfSpawner()
+    {
+        wolfSpawnCheckTime += Time.deltaTime;
+
+        if (wolfSpawnCheckTime > wolfController.SpawnIntervalLimit / 2 && isNightmareTime)
+        {
+            wolfController.Spawn();
+            wolfSpawnCheckTime = 0;
+        }
+
+        if (wolfSpawnCheckTime > wolfController.SpawnIntervalLimit && !isNightmareTime)
+
+        {
+            wolfController.Spawn();
+            wolfSpawnCheckTime = 0;
+        }
+    }
+
+    private void WolfsAttack()
+    {
+        wolfController.WolfAttack(insideFenceSheeps);
+    }
+
     public void CheckoutInsideSheep()
     {
         for (int i = 0; i < insideFenceSheeps.Count; i++)
